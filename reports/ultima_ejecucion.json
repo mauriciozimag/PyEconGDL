@@ -1,0 +1,11 @@
+{
+  "fecha_utc": "2026-11-14T06:56:03.493875+00:00",
+  "estado": "OK",
+  "registros_entrada": 186,
+  "registros_salida": 186,
+  "granularidad": "mensual (una fila por CICLO + MES)",
+  "ruta_salida": "data/processed/deuda_bruta_enriquecida.parquet",
+  "periodo_inicial": "2011-01-01",
+  "periodo_final": "2026-06-01",
+  "error": null
+}
