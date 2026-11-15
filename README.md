@@ -69,8 +69,14 @@ Actualmente el repositorio ha sido estructurado de forma que, conforme a buenas 
 ## Documentación del proyecto
 A continuación se presentan los accesos directos a los componentes técnicos detallados del proyecto integrador:
 
-*[Arquitectura del sistema](docs/Arquitectura.jpg)  
+*[Arquitectura del sistema](docs/arquitectura.jpg)  
 *[Fuentes de datos detalladas](docs/fuentes.md)  
 *[Guía práctica de optimización](docs/guia_optimizacion.md)  
 *[Roles de trabajo del equipo](docs/roles.md)  
 
+## Avance del Pipeline Modular — Fuente piloto: Deuda Pública (actividad 11)
+
+Como fase piloto del proyecto, se implementó y validó el flujo modular de principio a fin en *PySpark* utilizando la serie histórica de *Deuda Bruta* (SHCP). Lo anterior para verificar la arquitectura antes de incorporar el resto de las variables macroeconómicas.
+
+El siguiente acceso directo contiene la descripción detallada de este avance:
+*[Avance de pipeline modular](docs/avancepipelineact11.md)
