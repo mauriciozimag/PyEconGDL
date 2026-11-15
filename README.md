@@ -32,7 +32,7 @@ Para el desarrollo de este análisis macroeconómico y financiero, el proyecto s
 
 * **Banco de México (Banxico):** Provee el histórico y las proyecciones de las variables de política monetaria, fundamentalmente la **Tasa de Interés Interbancaria de Equilibrio**.
 * **Instituto Nacional de Estadística y Geografía (INEGI):** Aporta los indicadores económicos clave para medir el impacto de las decisiones monetarias en la economía real, específicamente el **Índice Nacional de Precios al Consumidor (INPC)** para el análisis de la inflación, y el **Indicador Global de la Actividad Económica (IGAE)** para medir el dinamismo y crecimiento del país.
-* **Secretaría de Hacienda y Crédito Público (SHCP):** Suministra los registros históricos del sector público presupuestario, permitiendo extraer las series de tiempo relacionadas con la **recaudación de ingresos tributarios** y el **ejercicio del gasto público** del Gobierno Federal.
+* **Secretaría de Hacienda y Crédito Público (SHCP):** Suministra los registros históricos del sector público presupuestario, permitiendo extraer las series de tiempo relacionadas con la **recaudación de ingresos tributarios**, el **ejercicio del gasto público** y **deuda pública** del Gobierno Federal.
 
 *Nota: El detalle técnico de la estructura, periodicidad, formatos y el diccionario de estas variables se encuentra documentado en el apartado correspondiente del repositorio.*
 
