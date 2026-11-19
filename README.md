@@ -51,7 +51,7 @@ Al concluir el desarrollo e implementación de este proyecto integrador, se cont
 ### Arquitectura y etapas del procesamiento
 El pipeline de datos del proyecto está diseñado bajo una arquitectura distribuida en **PySpark**, estructurada en cuatro secciones funcionales que transforman los registros crudos en conocimiento analítico a través de las siguientes etapas:
 
-* **Fuentes:** Extracción de las series históricas (2011-2026) desde los portales oficiales de **Banxico** (tasa de interés), **INEGI** (INPC e IGAE) y la **SHCP** (ingresos y gastos públicos).
+* **Fuentes:** Extracción de las series históricas (2011-2026) desde los portales oficiales de **Banxico** (tasa de interés), **INEGI** (INPC e IGAE) y la **SHCP** (deuda pública e ingresos y gastos públicos).
 
 * **1. Ingesta (sección de datos transaccionales):** Carga distribuida hacia el entorno de Spark para la lectura inicial y estandarización de los formatos de entrada.  
 * **2. Validación y limpieza (sección de procesamiento):** Aseguramiento de la calidad de los datos mediante el tratamiento de valores nulos y la homologación de fechas (`datetime`) para alinear las distintas periodicidades.  
