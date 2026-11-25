@@ -32,11 +32,9 @@ Diseñar e implementar un pipeline de datos distribuido en PySpark que integre, 
 
 ### Fuentes de datos
 
-Para el desarrollo de este análisis macroeconómico y financiero, el proyecto se abastece de datos oficiales, públicos y centralizados provenientes de las organismos que a continuación se enlistan:
-
-* **Banco de México (Banxico):** Provee el histórico y las proyecciones de las variables de política monetaria, fundamentalmente la **Tasa de Interés Interbancaria de Equilibrio**.
-* **Instituto Nacional de Estadística y Geografía (INEGI):** Aporta los indicadores económicos clave para medir el impacto de las decisiones monetarias en la economía real, específicamente el **Índice Nacional de Precios al Consumidor (INPC)** para el análisis de la inflación, y el **Indicador Global de la Actividad Económica (IGAE)** para medir el dinamismo y crecimiento del país.
-* **Secretaría de Hacienda y Crédito Público (SHCP):** Suministra los registros históricos del sector público presupuestario, permitiendo extraer las series de tiempo relacionadas con la **recaudación de ingresos tributarios**, el **ejercicio del gasto público** y **deuda pública** del Gobierno Federal.
+* **Banco de México (Banxico):** - Tasa de Interés Interbancaria de Equilibrio.
+* **Instituto Nacional de Estadística y Geografía (INEGI):** - Índice Nacional de Precios al Consumidor (INPC) y el Indicador Global de la Actividad Económica (IGAE).
+* **Secretaría de Hacienda y Crédito Público (SHCP):** - Ingreso, gasto, financiamiento y resultados y deuda pública.
 
 *Nota: El detalle técnico de la estructura, periodicidad, formatos y el diccionario de estas variables se encuentra documentado en el apartado correspondiente del repositorio.*
 
@@ -68,7 +66,7 @@ El pipeline de datos del proyecto está diseñado bajo una arquitectura distribu
 * **5. Almacenamiento (sección de datos analíticos):** Persistencia optimizada de la información procesada en un entorno tipo *data lakehouse* utilizando formatos columnares de alto rendimiento (**parquet / delta lake**).  
 * **6. Análisis (sección de visualización y ciencia de datos):** Consumo del dataset maestro mediante *Jupyter Notebooks* (PySpark y Plotly) para ejecutar el estudio cuantitativo de impacto y rezagos.  
 
-*Nota: El diagrama completo y las especificaciones técnicas de cada componente pueden consultarse en la sección de [Arquitectura del sistema](docs/arquitectura.jpg).*
+*Nota: El diagrama completo y las especificaciones técnicas de cada componente pueden consultarse en la sección de [Arquitectura del sistema](docs/arquitectura2.0.jpeg).*
 
 ### Estado del desarrollo
 
@@ -160,3 +158,7 @@ El consumo analítico del proyecto se desarrolla en el notebook **[`notebooks/re
 3. **Ejecutar el consumo analítico:**
    * Abrir [`notebooks/reporte_de_proyecto.ipynb`](notebooks/reporte_de_proyecto.ipynb) con un kernel que tenga `pyspark`, `pandas` y `matplotlib`.
    * Ejecutar todas las celdas en orden: las consultas en Spark SQL validarán la integridad del Parquet y regenerarán las gráficas en `docs/pregunta1/`, `docs/pregunta2/` y `docs/pregunta3/`.
+
+## Consulta de resultados
+
+[Reporte de análisis](reports/reporte.pdf)

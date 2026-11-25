@@ -1,5 +1,7 @@
 # Roles
+
 ## Organización
+
 **Developer:** MAURICIO GAMIZ SILVA  
 **Technical Reviewer:** MARIA ELBA BECERRA JIMENEZ  
 **Documentation Lead:** CESAR MICHAEL DURAN GUTIERREZ
@@ -11,6 +13,7 @@ _Technical Reviewer (Revisión y validación):_ Se encarga de auditar la calidad
 _Documentation Lead (Documentación y diagramas):_ Es quien lidera la redacción de los entregables escritos, el mantenimiento del repositorio, la elaboración de los diagramas de arquitectura y el registro formal de los avances.
 
 ## Decisiones iniciales
+
 Se creó un repositorio en GitHub, el cual fue compartido al equipo de trabajo. Cada integrante generó una rama dentro del repositorio y generó una contribución de prueba para practicar el commit, push, Pull Request y merge hacia main.
 
 Cada integrante del equipo buscó bases de datos en fuentes públicas, teniendo en cuenta su relación con las fuentes base para generar una pregunta analítica que permita procesar, integrar y analizar información económica y financiera del país.
