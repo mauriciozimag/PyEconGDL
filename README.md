@@ -80,3 +80,66 @@ Como fase piloto del proyecto, se implementó y validó el flujo modular de prin
 
 El siguiente acceso directo contiene la descripción detallada de este avance:
 *[Avance de pipeline modular](docs/avancepipelineact11.md)
+
+## Sección de consumo analítico y resultados finales (actividad 12)
+
+El consumo analítico del proyecto se desarrolla en el notebook **[`notebooks/reporte_de_proyecto.ipynb`](notebooks/reporte_de_proyecto.ipynb)** mediante **PySpark (Spark SQL)** directamente sobre el dataset maestro consolidado.
+
+### Dataset final consumido
+* **Archivo:** [`data/processed/macro_finanzas_consolidado.parquet`](data/processed/macro_finanzas_consolidado.parquet)
+* **Cobertura y granularidad:** 186 observaciones mensuales (`2011-01` a `2026-06`) a nivel nacional; 174 meses con variaciones anuales calculables (`2012-01` a `2026-06`).
+* **Variables principales:** `CICLO`, `TIIE` (Banxico), `VALOR_INPC` y `MONTO_IGAE_TOTAL` (INEGI), `DEUDA`, `INGRESO PUBLICO` y `GASTO PUBLICO` (SHCP).
+
+---
+
+### Preguntas específicas, hallazgos y evidencias
+
+#### 1. Política monetaria y deuda pública (`TIIE` vs. `DEUDA`)
+* **Pregunta:** ¿En qué medida los ciclos de endurecimiento monetario (incrementos en la TIIE) aceleran el crecimiento anual de la Deuda Pública de México entre 2012 y 2026, y con cuántos meses de rezago se refleja este encarecimiento?
+* **Hallazgos principales:**
+  * El crecimiento anual promedio de la deuda es de **10.47%**, siendo mayor bajo postura monetaria acomodaticia (**12.39%**, con `TIIE < 6.35%`) que bajo postura restrictiva (**8.60%**), lo que refleja que las expansiones de deuda responden principalmente a necesidades fiscales y choques presupuestarios.
+  * La correlación contemporánea (`k = 0`) es de **-0.3460** y se atenúa progresivamente hasta **-0.1159 con un rezago de 12 meses**.
+* **Evidencias gráficas:**
+  * [Evolución de la TIIE y crecimiento anual de la Deuda Pública](docs/pregunta1/tiie_deuda_crecimiento.png)
+  * [Correlación con rezagos: TIIE → Deuda Pública](docs/pregunta1/tiie_deuda_rezagos.png)
+
+#### 2. Política monetaria e inflación (`TIIE` vs. `INPC`)
+* **Pregunta:** ¿Ha sido la tasa de interés real positiva en México entre 2012 y 2026, y reacciona la TIIE a la inflación medida con el INPC?
+* **Hallazgos principales:**
+  * La tasa real ex post promedio fue de **1.91 puntos porcentuales**, registrando **41 meses** (**23.6%**) con tasa real negativa (concentrados en 2013–2014 y 2021–2022, con un mínimo de **-2.46 pp** en `2021-11`).
+  * La correlación entre inflación y TIIE pasa de **0.38** contemporánea a **0.72 con 12 meses de rezago**, confirmando una política monetaria reactiva.
+* **Evidencias gráficas:**
+  * [TIIE frente a inflación anual y tasa real](docs/pregunta2/tiie_inpc_tasa_real.png)
+  * [Correlación con rezagos: Inflación → TIIE](docs/pregunta2/tiie_inflacion_rezagos.png)
+
+#### 3. Política monetaria y actividad económica (`TIIE` vs. `IGAE`)
+* **Pregunta:** ¿En qué medida los incrementos en la TIIE frenan el dinamismo de la actividad económica (IGAE) entre 2012 y 2026, y con cuántos meses de rezago se manifiesta este enfriamiento?
+* **Hallazgos principales:**
+  * El crecimiento anual promedio del IGAE es de **1.54%** (**25.9%** de meses en contracción). Bajo postura restrictiva (`TIIE >= 6.35%`) el crecimiento promedio baja a **1.22%** frente a **1.87%** en periodos acomodaticios (brecha de **0.65 pp**).
+  * La correlación contemporánea es prácticamente nula (**-0.0415**), alcanzando su máximo impacto negativo de **-0.2247 a los 9 meses de rezago**.
+* **Evidencias gráficas:**
+  * [Evolución de la TIIE y crecimiento anual del IGAE](docs/pregunta3/tiie_igae_actividad.png)
+  * [Correlación con rezagos: TIIE → IGAE](docs/pregunta3/tiie_igae_rezagos.png)
+
+---
+
+### Limitaciones del análisis
+* **Choques exógenos:** La pandemia de 2020 y el rebote estadístico de 2021 introducen valores extremos en las series de actividad económica y deuda.
+* **Correlación vs. causalidad:** Las correlaciones bivariadas describen comovimientos y rezagos temporales, pero no aíslan factores externos (ciclo industrial de EE. UU., tipo de cambio o política fiscal).
+* **Ventana efectiva:** el cálculo de variaciones interanuales (`LAG(..., 12)`) descarta los primeros 12 meses (`2011-01` a `2011-12`), dejando 174 meses efectivos.
+
+---
+
+### Instrucciones de ejecución y reproducibilidad
+
+1. **Clonar el repositorio e instalar dependencias:**
+   ```bash
+   git clone https://github.com
+   cd PyEconGDL
+   pip install -r requirements.txt pandas matplotlib
+   ```
+2. **Verificar o generar el dataset consolidado:**
+   * Asegurar la existencia de `data/processed/macro_finanzas_consolidado.parquet` (generado por `src/pipeline.py`).
+3. **Ejecutar el consumo analítico:**
+   * Abrir [`notebooks/reporte_de_proyecto.ipynb`](notebooks/reporte_de_proyecto.ipynb) con un kernel que tenga `pyspark`, `pandas` y `matplotlib`.
+   * Ejecutar todas las celdas en orden: las consultas en Spark SQL validarán la integridad del Parquet y regenerarán las gráficas en `docs/pregunta1/`, `docs/pregunta2/` y `docs/pregunta3/`.
