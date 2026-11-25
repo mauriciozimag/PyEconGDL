@@ -134,7 +134,7 @@ El consumo analítico del proyecto se desarrolla en el notebook **[`notebooks/re
 
 1. **Clonar el repositorio e instalar dependencias:**
    ```bash
-   git clone https://github.com
+   git clone https://github.com/mauriciozimag/PyEconGDL
    cd PyEconGDL
    pip install -r requirements.txt pandas matplotlib
    ```
